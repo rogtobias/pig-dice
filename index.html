@@ -23,7 +23,7 @@
             <input class="form-control" type="text" id="inputtedPlayerTwo" value="">
           </div>
 
-          <button type="submit"><img src="img/singleDie.jpg" alt="Submit"></button>
+          <button type="submit" name="btn btn-submit">Submit</button>
         </form>
       </div>
     </div>
@@ -32,11 +32,19 @@
       <div class="container">
         <form id="playerOneForm">
           <div class="form-group">
-            <label for="playerOneRoll">Roll the bones</label>
-            <input class="form-control" type="text" id="playerOneRoll" value="">
+            <h2><span id="playerOneLabel"></span></h2>
+            <label for="playerOneRoll">Role the bone!</label>
           </div>
 
-          <button type="submit"><img src="img/singleDie.jpg" alt="Submit"></button>
+          <button id="playerOneRoleBtn" type="click"><img src="img/singleDie.jpg" alt="role the die"></button>
+          <p>
+            <span id="playerOne"></span> you roled: <span id="playerOneRole"></span>
+          </p>
+          <p>
+            <span id="playerOne"></span> your total score: <span id="playerOneTotalScore"></span>
+          </p>
+
+          <button id="playerOneHold" type="click" name="btn btn-holdPlayerOne">Hold</button>
         </form>
       </div>
     </div>
