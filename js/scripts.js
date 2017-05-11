@@ -61,7 +61,7 @@ function GetRoll() {
   return Math.floor(Math.random() * 6) + 1;
 };
 
-function Player(turn) {
+function Player() {
   this.roll = 0;
   this.tempScore = 0;
   this.totalScore = 0;
@@ -85,20 +85,21 @@ Player.prototype.Hold = function() {
     player1.NewGame();
     player2.NewGame();
   } else {
-    alert(this.playerName + " You are holding and your score has been added.");
+    alert(this.playerName + " You are holding and your score has been added. Please pass the mouse.");
   }
 };
 
 Player.prototype.NewGame = function() {
   debugger;
   this.roll = 0;
+  $("#playerOneRoll").text(player1.roll);
+  $("#playerTwoRoll").text(player2.roll);
   this.tempScore = 0;
   this.totalScore = 0;
+  $("#playerOneTotalScore").text(player1.totalScore);
+  $("#playerTwoTotalScore").text(player2.totalScore);
   this.playerName = "";
-  $("#playerOneForm")[0].reset();
-  $("#playerTwoForm")[0].reset();
   $("#main").hide();
   $("#intro").show();
   $("#players")[0].reset();
-
 };

@@ -1,3 +1,12 @@
 #main {
   display: none;
 }
+
+#frontPageImg {
+  float: right;
+  margin-bottom: 20px;
+}
+
+#jumboTextStyle {
+  text-shadow: 3px 3px #ffcccc;
+}
