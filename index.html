@@ -29,23 +29,67 @@
     </div>
 
     <div id="main">
-      <div class="container">
-        <form id="playerOneForm">
-          <div class="form-group">
-            <h2><span id="playerOneLabel"></span></h2>
-            <label for="playerOneRoll">Role the bone!</label>
+      <div class="row">
+        <div class="col-md-5">
+          <div id="planelStylePlayOne" class="panel panel-default">
+            <div class="panel-heading">
+            <h2 id="playerOne"></h2>
+              <div class="panel-body">
+                <form id="playerOneForm">
+                  <div class="form-group">
+                  <label for="playerOneRoll">Roll the bone!</label>
+                  </div>
+
+                  <button id="playerOneRollBtn" type="click"><img src="img/singleDie.jpg" alt="roll the die"></button>
+                  <p>
+                    You rolled: <span id="playerOneRoll"></span>
+                  </p>
+                  <h5>
+                    Your total score: <span id="playerOneTotalScore"></span>
+                  </h5>
+
+                  <button id="playerOneHold" type="click" name="btn btn-holdPlayerOne">Hold</button>
+                </form>
+              </div>
+            </div>
           </div>
+        </div>
 
-          <button id="playerOneRoleBtn" type="click"><img src="img/singleDie.jpg" alt="role the die"></button>
-          <p>
-            <span id="playerOne"></span> you roled: <span id="playerOneRole"></span>
-          </p>
-          <p>
-            <span id="playerOne"></span> your total score: <span id="playerOneTotalScore"></span>
-          </p>
+        <div class="col-md-2">
+          <div id="panelStyleReset" class="panel panel-default">
+            <div class="panel-heading">
+              <h2>Hey pig, piggy, pig, pig, pig, let's play again</h2>
+              <div class="panel-body">
+                <button type="click" id="btn-newGame"><img src="img/newGame.jpg" alt="new game" style="height:50px;"></button>
+              </div>
+            </div>
+          </div>
+        </div>
 
-          <button id="playerOneHold" type="click" name="btn btn-holdPlayerOne">Hold</button>
-        </form>
+        <div class="col-md-5">
+          <div id="planelStylePlayTwo" class="panel panel-default">
+            <div class="panel-heading">
+            <h2 id="playerTwo"></h2>
+              <div class="panel-body">
+                <form id="playerTwoForm">
+                  <div class="form-group">
+                  <label for="playerTwoRoll">Role the bone!</label>
+                  </div>
+
+                  <button id="playerTwoRollBtn" type="click"><img src="img/singleDie.jpg" alt="roll the die"></button>
+                  <p>
+                    You rolled: <span id="playerTwoRoll"></span>
+                  </p>
+                  <h5>
+                    Your total score: <span id="playerTwoTotalScore"></span>
+                  </h5>
+
+                  <button id="playerTwoHold" type="click" name="btn btn-holdPlayerTwo">Hold</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>

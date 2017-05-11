@@ -20,18 +20,36 @@ $(document).ready(function() {
 
   });
 
-  $("#playerOneRoleBtn").click(function() {
+  $("#playerOneRollBtn").click(function() {
     event.preventDefault();
-    player1.role = GetRole();
-    player1.RoleOne();
-    $("#playerOneRole").text(player1.role);
+    player1.roll = GetRoll();
+    player1.RollOne();
+    $("#playerOneRoll").text(player1.roll);
+  });
+
+  $("#playerTwoRollBtn").click(function() {
+    event.preventDefault();
+    player2.roll = GetRoll();
+    player2.RollOne();
+    $("#playerTwoRoll").text(player2.roll);
   });
 
   $("#playerOneHold").click(function() {
     event.preventDefault();
     player1.Hold();
     $("#playerOneTotalScore").text(player1.totalScore);
-    console.log(player1.totalScore);
+  });
+
+  $("#playerTwoHold").click(function() {
+    event.preventDefault();
+    player2.Hold();
+    $("#playerTwoTotalScore").text(player2.totalScore);
+  });
+
+  $("#btn-newGame").click(function() {
+    event.preventDefault();
+    player1.NewGame();
+    player2.NewGame();
   });
 });
 
@@ -39,47 +57,48 @@ $(document).ready(function() {
 var player1 = "";
 var player2 = "";
 
-function GetRole() {
+function GetRoll() {
   return Math.floor(Math.random() * 6) + 1;
 };
 
 function Player(turn) {
-  this.role = 0;
+  this.roll = 0;
   this.tempScore = 0;
   this.totalScore = 0;
-  this.turn = turn;
   this.playerName;
 };
 
-Player.prototype.RoleOne = function() {
-  if (this.role === 1) {
+Player.prototype.RollOne = function() {
+  if (this.roll === 1) {
     this.tempScore = 0;
-    alert(this.playerName + " Your turn is over.");
+    alert(this.playerName + " Your turn is over. Please pass the mouse.");
   } else {
-    this.tempScore += this.role;
+    this.tempScore += this.roll;
   }
 };
 
 Player.prototype.Hold = function() {
   this.totalScore += this.tempScore;
   this.tempScore = 0;
-  alert(this.playerName + " You are holding and your score has been added.")
-};
-
-Player.prototype.WinnerCheck = function() {
-  if (this.totalScore >= 100) {
-    alert(this.playerName + " You are the winner!")
+  if (this.totalScore >= 15) {
+    alert(this.playerName + " You are the winner! congratulations!");
+    player1.NewGame();
+    player2.NewGame();
+  } else {
+    alert(this.playerName + " You are holding and your score has been added.");
   }
 };
 
 Player.prototype.NewGame = function() {
-  this.role = 0;
+  debugger;
+  this.roll = 0;
   this.tempScore = 0;
-  this.totalScore =0;
+  this.totalScore = 0;
   this.playerName = "";
-};
+  $("#playerOneForm")[0].reset();
+  $("#playerTwoForm")[0].reset();
+  $("#main").hide();
+  $("#intro").show();
+  $("#players")[0].reset();
 
-var ClearValues = function() {
-  $("#inputtedNameOne").val("");
-  $("#inputtedNameTwo").val("");
-}
+};
