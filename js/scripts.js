@@ -3,7 +3,7 @@ $(document).ready(function() {
   $("#players").submit(function(event) {
     event.preventDefault();
 
-    var gameType = $("input:radio[name=flavor]:checked").val();
+    var gameType = GameType();
     if (gameType === "twoPlayer") {
       player1 = new Player(true);
       player2 = new Player(false);
@@ -52,22 +52,36 @@ $(document).ready(function() {
 
   $("#playerOneRollBtn").click(function() {
     event.preventDefault();
-    player1.roll = GetRoll();
+    player1.GetRoll();
     player1.RollOne();
     $("#playerOneRoll").text(player1.roll);
   });
 
   $("#playerTwoRollBtn").click(function() {
     event.preventDefault();
-    player2.roll = GetRoll();
+    player2.GetRoll();
     player2.RollOne();
     $("#playerTwoRoll").text(player2.roll);
   });
 
   $("#playerOneHold").click(function() {
     event.preventDefault();
+    debugger;
     player1.Hold();
     $("#playerOneTotalScore").text(player1.totalScore);
+    var gameType = GameType();
+    if (gameType === "computerEasy") {
+      while (player2.totalRoll < 3) {
+        player2.GetRoll();
+        $("#playerTwoRoll").text(player2.roll);
+        player2.RollOne();
+      }
+      $("#playerTwoTotalScore").text(player2.totalScore);
+      player2.totalRoll = 0;
+      alert("Mad Pig is finished! It's your turn.");
+    } else if (gameType === "computerHard") {
+
+    }
   });
 
   $("#playerTwoHold").click(function() {
@@ -87,12 +101,18 @@ $(document).ready(function() {
 var player1 = "";
 var player2 = "";
 
-function GetRoll() {
-  return Math.floor(Math.random() * 6) + 1;
+Player.prototype.GetRoll = function() {
+  this.roll = Math.floor(Math.random() * 6) + 1;
+  this.totalRoll += 1;
+};
+
+function GameType() {
+  return $("input:radio[name=gameType]:checked").val();
 };
 
 function Player() {
   this.roll = 0;
+  this.totalRoll = 0;
   this.tempScore = 0;
   this.totalScore = 0;
   this.playerName;
@@ -104,6 +124,7 @@ Player.prototype.RollOne = function() {
     alert(this.playerName + " Your turn is over. Please pass the mouse.");
   } else {
     this.tempScore += this.roll;
+    //this.totalRoll += 1;
   }
 };
 
