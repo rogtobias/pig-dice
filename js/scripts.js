@@ -3,21 +3,51 @@ $(document).ready(function() {
   $("#players").submit(function(event) {
     event.preventDefault();
 
-    player1 = new Player(true);
-    player2 = new Player(false);
+    var gameType = $("input:radio[name=flavor]:checked").val();
+    if (gameType === "twoPlayer") {
+      player1 = new Player(true);
+      player2 = new Player(false);
 
-    $("#main").show();
-    $("#intro").hide();
+      $("#main").show();
+      $("#intro").hide();
 
-    var playerOneName = $("#inputtedPlayerOne").val();
-    var playerTwoName = $("#inputtedPlayerTwo").val();
+      var playerOneName = $("#inputtedPlayerOne").val();
+      var playerTwoName = $("#inputtedPlayerTwo").val();
 
-    player1.playerName = playerOneName;
-    player2.playerName = playerTwoName;
+      player1.playerName = playerOneName;
+      player2.playerName = playerTwoName;
 
-    $("#playerOne").text(player1.playerName);
-    $("#playerTwo").text(player2.playerName);
+      $("#playerOne").text(player1.playerName);
+      $("#playerTwo").text(player2.playerName);
+    } else if (gameType === "computerEasy") {
+      player1 = new Player(true);
+      player2 = new Player(false);
 
+      $("#main").show();
+      $("#intro").hide();
+
+      var playerOneName = $("#inputtedPlayerOne").val();
+
+      player1.playerName = playerOneName;
+      player2.playerName = "Mean Pig";
+
+      $("#playerOne").text(player1.playerName);
+      $("#playerTwo").text(player2.playerName);
+    } else {
+      player1 = new Player(true);
+      player2 = new Player(false);
+
+      $("#main").show();
+      $("#intro").hide();
+
+      var playerOneName = $("#inputtedPlayerOne").val();
+
+      player1.playerName = playerOneName;
+      player2.playerName = "Mean Pig";
+
+      $("#playerOne").text(player1.playerName);
+      $("#playerTwo").text(player2.playerName);
+    }
   });
 
   $("#playerOneRollBtn").click(function() {
@@ -90,7 +120,6 @@ Player.prototype.Hold = function() {
 };
 
 Player.prototype.NewGame = function() {
-  debugger;
   this.roll = 0;
   $("#playerOneRoll").text(player1.roll);
   $("#playerTwoRoll").text(player2.roll);

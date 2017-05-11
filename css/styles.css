@@ -8,5 +8,10 @@
 }
 
 #jumboTextStyle {
-  text-shadow: 3px 3px #ffcccc;
+  text-shadow: 3px 3px #ffb3b3;
+}
+
+.radio {
+  text-align: center;
+  padding-top: 20px;
 }
